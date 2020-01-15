@@ -12,8 +12,8 @@
 This project is REST API test from Mamikost
 
 - first you must import database from mamikost.sql file into your mysql
-- than import mamikost.postman_collection.json into your postman
-- after that run the laravel (go to dir project and than "php artisan serve" to run)
+- then import mamikost.postman_collection.json into your postman
+- after that run the laravel (go to dir project and then "php artisan serve" to run)
 - first if you dont have user account, please register
 - after that you will get user id and api_token for other transaction
 - the scheduled job is set on this project, to run it just execute php artisan schedule:run >> /dev/null 2>&1
