@@ -1,0 +1,599 @@
+{
+	"info": {
+		"_postman_id": "a76141b2-af73-44fb-b22c-1f9f9a831cfb",
+		"name": "mamikost",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "list Kost + search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/kost/?itemId=4&search=kost&priceOrder=0&province=Jawa Tengah&city=Surakarta",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"kost",
+						""
+					],
+					"query": [
+						{
+							"key": "itemId",
+							"value": "4",
+							"description": "this is for pagination. response itemId must inputed here after first query. "
+						},
+						{
+							"key": "search",
+							"value": "kost",
+							"description": "This is for searching caption kost ad"
+						},
+						{
+							"key": "priceOrder",
+							"value": "0",
+							"description": "0 for asc and 1 for desc"
+						},
+						{
+							"key": "province",
+							"value": "Jawa Tengah",
+							"description": "province kost"
+						},
+						{
+							"key": "city",
+							"value": "Surakarta",
+							"description": "city cost"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register new user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/signup?name=riookebla&email=riookeblablaoke@gmail.com&password=okeokeoke",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"signup"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "riookebla"
+						},
+						{
+							"key": "email",
+							"value": "riookeblablaoke@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "okeokeoke"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show User Information",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_user",
+							"value": "10",
+							"description": "user id",
+							"type": "text"
+						},
+						{
+							"key": "api_token",
+							"value": "PZdB5CQgPunsy1G8eMEdIgKp4sYEtidB",
+							"description": "api token user",
+							"type": "text"
+						},
+						{
+							"key": "id_profile",
+							"value": "10",
+							"description": "user id of the user you want to see",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/showUser",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "riooke123@gmail.com",
+							"description": "user email email",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "okeokeoke",
+							"description": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/loginApi",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"loginApi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Kost",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "10",
+							"description": "user id",
+							"type": "text"
+						},
+						{
+							"key": "api_token",
+							"value": "PZdB5CQgPunsy1G8eMEdIgKp4sYEtidB",
+							"description": "api token user",
+							"type": "text"
+						},
+						{
+							"key": "caption",
+							"value": "Kost Kost an mahal",
+							"description": "Caption for kost ad",
+							"type": "text"
+						},
+						{
+							"key": "kost",
+							"value": "15",
+							"description": "this is maximum room",
+							"type": "text"
+						},
+						{
+							"key": "available_room_count",
+							"value": "3",
+							"description": "this is available room",
+							"type": "text"
+						},
+						{
+							"key": "amenities",
+							"value": "tv,kulkas,ac,kamar mandi dalam",
+							"description": "amenities in kost. you can add many amenities with (koma) \",\" for split it.",
+							"type": "text"
+						},
+						{
+							"key": "imgUrl",
+							"value": "https://static.mamikos.com/uploads/cache/data/style/2019-12-11/XJw1eqyi-540x720.jpg",
+							"description": "imgUrl of kost, you can add many imgUrl with (koma) \",\" for split it.",
+							"type": "text"
+						},
+						{
+							"key": "large",
+							"value": "16",
+							"description": "large of kost room",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Kamar berada di LANTAI 3 | BISA BOOKING dulu sebelum kehabisan | bisa BERDUA tambah 50ribu/hari | GRATIS laundry | sudah tersedia kasur disetiap kamar | lokasi kos strategis dekat dengan Universitas Katholik Parahyangan, Universitas Pasundan, Universitas Pendidikan Indonesia, Pasar Sederhana, Plaza Sentrasari, RS HA Rotinsulu Lung, juga terjangkau dengan mini market, warung makan, SPBU dan atm | YUK buruan BOOKING kamar idaman kamu",
+							"description": "Description of kost",
+							"type": "text"
+						},
+						{
+							"key": "price_day",
+							"value": "",
+							"description": "price per day",
+							"type": "text"
+						},
+						{
+							"key": "price_week",
+							"value": "",
+							"description": "price per week",
+							"type": "text"
+						},
+						{
+							"key": "price_month",
+							"value": "1000000",
+							"description": "price per month (must filled)",
+							"type": "text"
+						},
+						{
+							"key": "price_year",
+							"value": "",
+							"description": "price per Year",
+							"type": "text"
+						},
+						{
+							"key": "province",
+							"value": "Jawa Barat",
+							"description": "province location",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "Bandung",
+							"description": "city location",
+							"type": "text"
+						},
+						{
+							"key": "distric",
+							"value": "Cidadap",
+							"description": "distric location",
+							"type": "text"
+						},
+						{
+							"key": "location",
+							"value": "01342",
+							"description": "location id",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/createKost",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"createKost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Detile Kost",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "10",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "api_token",
+							"value": "PZdB5CQgPunsy1G8eMEdIgKp4sYEtidB",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "id_kost",
+							"value": "10",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/detileKost",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"detileKost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Kost Info",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_user",
+							"value": "10",
+							"description": "user id owner kost",
+							"type": "text"
+						},
+						{
+							"key": "api_token",
+							"value": "PZdB5CQgPunsy1G8eMEdIgKp4sYEtidB",
+							"description": "api token user",
+							"type": "text"
+						},
+						{
+							"key": "caption",
+							"value": "Kost Kost an mahal",
+							"description": "Caption for kost ad",
+							"type": "text"
+						},
+						{
+							"key": "kost",
+							"value": "15",
+							"description": "this is maximum room",
+							"type": "text"
+						},
+						{
+							"key": "available_room_count",
+							"value": "3",
+							"description": "this is available room",
+							"type": "text"
+						},
+						{
+							"key": "amenities",
+							"value": "tv,kulkas,ac,kamar mandi dalam",
+							"description": "amenities in kost. you can add many amenities with (koma) \",\" for split it.",
+							"type": "text"
+						},
+						{
+							"key": "imgUrl",
+							"value": "https://static.mamikos.com/uploads/cache/data/style/2019-12-11/XJw1eqyi-540x720.jpg",
+							"description": "imgUrl of kost, you can add many imgUrl with (koma) \",\" for split it.",
+							"type": "text"
+						},
+						{
+							"key": "large",
+							"value": "16",
+							"description": "large of kost room",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Kamar berada di LANTAI 3 | BISA BOOKING dulu sebelum kehabisan | bisa BERDUA tambah 50ribu/hari | GRATIS laundry | sudah tersedia kasur disetiap kamar | lokasi kos strategis dekat dengan Universitas Katholik Parahyangan, Universitas Pasundan, Universitas Pendidikan Indonesia, Pasar Sederhana, Plaza Sentrasari, RS HA Rotinsulu Lung, juga terjangkau dengan mini market, warung makan, SPBU dan atm | YUK buruan BOOKING kamar idaman kamu",
+							"description": "Description of kost",
+							"type": "text"
+						},
+						{
+							"key": "price_day",
+							"value": "",
+							"description": "price per day",
+							"type": "text"
+						},
+						{
+							"key": "price_week",
+							"value": "",
+							"description": "price per week",
+							"type": "text"
+						},
+						{
+							"key": "price_month",
+							"value": "1000000",
+							"description": "price per month (must filled)",
+							"type": "text"
+						},
+						{
+							"key": "price_year",
+							"value": "",
+							"description": "price per year",
+							"type": "text"
+						},
+						{
+							"key": "province",
+							"value": "Jawa Barat",
+							"description": "province kost",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "Bandung",
+							"description": "city kost",
+							"type": "text"
+						},
+						{
+							"key": "distric",
+							"value": "Cidadap",
+							"description": "distric kost",
+							"type": "text"
+						},
+						{
+							"key": "location",
+							"value": "01342",
+							"description": "location id",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "10",
+							"description": "id kost",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/updateKost",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"updateKost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Kost",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_user",
+							"value": "",
+							"description": "user id owner",
+							"type": "text"
+						},
+						{
+							"key": "api_token",
+							"value": "",
+							"description": "api token owner",
+							"type": "text"
+						},
+						{
+							"key": "id_kost",
+							"value": "",
+							"description": "id kost",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/deleteKost",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"deleteKost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Kost Available",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_user",
+							"value": "",
+							"description": "user id",
+							"type": "text"
+						},
+						{
+							"key": "api_token",
+							"value": "",
+							"description": "api token",
+							"type": "text"
+						},
+						{
+							"key": "id_kost",
+							"value": "",
+							"description": "id kost",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/checkAvailable",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"checkAvailable"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

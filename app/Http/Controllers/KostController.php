@@ -62,6 +62,88 @@ class KostController extends Controller
         $api_token = $request['api_token'];
         $check = User::where(['id'=>$userId, 'api_token'=>$api_token])->first();
 
+        if(!isset($request['available_room_count'])){
+            $response = array('error'=>true,
+                                        'error_code'=>400,
+                                        'messages'=>'available_room_count must be filled!');
+            $status = 400;
+        
+            return response($response,$status);
+        
+        }
+        if(!isset($request['amenities'])){
+            $response = array('error'=>true,
+                                        'error_code'=>400,
+                                        'messages'=>'amenities must be filled!');
+            $status = 400;
+        
+            return response($response,$status);
+        
+        }
+        if(!isset($request['imgUrl'])){
+            $response = array('error'=>true,
+                                        'error_code'=>400,
+                                        'messages'=>'imgUrl must be filled!');
+            $status = 400;
+        
+            return response($response,$status);
+        
+        }
+        if(!isset($request['large'])){
+            $response = array('error'=>true,
+                                        'error_code'=>400,
+                                        'messages'=>'large must be filled!');
+            $status = 400;
+        
+            return response($response,$status);
+        
+        }
+        if(!isset($request['description'])){
+            $response = array('error'=>true,
+                                        'error_code'=>400,
+                                        'messages'=>'description must be filled!');
+            $status = 400;
+        
+            return response($response,$status);
+        
+        }
+        if(!isset($request['price_month'])){
+            $response = array('error'=>true,
+                                        'error_code'=>400,
+                                        'messages'=>'price_month must be filled!');
+            $status = 400;
+        
+            return response($response,$status);
+        
+        }
+        if(!isset($request['province'])){
+            $response = array('error'=>true,
+                                        'error_code'=>400,
+                                        'messages'=>'province must be filled!');
+            $status = 400;
+        
+            return response($response,$status);
+        
+        }
+        if(!isset($request['city'])){
+            $response = array('error'=>true,
+                                        'error_code'=>400,
+                                        'messages'=>'city must be filled!');
+            $status = 400;
+        
+            return response($response,$status);
+        
+        }
+        if(!isset($request['distric'])){
+            $response = array('error'=>true,
+                                        'error_code'=>400,
+                                        'messages'=>'distric must be filled!');
+            $status = 400;
+        
+            return response($response,$status);
+        
+        }
+
         if (count($check)>0) {
            $kost = Kost::create([
                 'caption' => $request['caption']
@@ -141,7 +223,7 @@ class KostController extends Controller
         return response($response,$status);
     }
 
-    public function delete($id){
+    public function delete(request $request){
         $userId = $request['id_user'];
         $api_token = $request['api_token'];
         $check = User::where(['id'=>$userId, 'api_token'=>$api_token])->first();
@@ -149,7 +231,7 @@ class KostController extends Controller
         $checkKostAuth = Kost::where(['id'=>$request['id_kost'], 'owner_id'=>$$userId])->first();
 
         if (count($check)>0 && count($checkKostAuth) > 0) {
-            Kost::where('id', $request['id'])
+            Kost::where('id', $request['id_kost'])
             ->update('remove_at',date("Y-m-d H:i:s"));
             $response = array('error'=>false,
                                 'error_code'=>0,
@@ -189,7 +271,7 @@ class KostController extends Controller
     }
 
     public function checkAvailableKost(request $data){
-        $userId = $data['id'];
+        $userId = $data['id_user'];
         $api_token = $data['api_token'];
         $check = User::where(['id'=>$userId, 'api_token'=>$api_token])->first();
         
@@ -248,20 +330,27 @@ class KostController extends Controller
     }
 
     public function showUser(Request $data){
-        $hash = Str::random(32);
-        User::where('id', $data['id'])
-        ->update(['api_token' => $hash, 'remember_token'=> $hash]);
-        $users = User::where('id',$data['id'])->first();
-
-        $response = array('error' => true,
-                           'error_code'=> 100,
-                          'messages'=>'User not found');
-        $status = 400;
-        if (count($users)>0) {
-            $response = array('error' => false,
-                            'error_code'=> 0,
-                            'user'=>$users);
-            $status = 200;
+        $userId = $data['id_user'];
+        $api_token = $data['api_token'];
+        $check = User::where(['id'=>$userId, 'api_token'=>$api_token])->first();
+        if(count($check)>0){
+            $users = User::where('id',$data['id_profile'])->first();
+            unset($users['api_token']);
+            $response = array('error' => true,
+                            'error_code'=> 100,
+                            'messages'=>'User not found');
+            $status = 400;
+            if (count($users)>0) {
+                $response = array('error' => false,
+                                'error_code'=> 0,
+                                'user'=>$users);
+                $status = 200;
+            }
+        }else{
+            $response = array('error' => true,
+                            'error_code'=> 100,
+                            'messages'=>'Error Authentication');
+            $status = 400;
         }
         
         return response($response,$status);

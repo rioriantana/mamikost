@@ -26,8 +26,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        
         $time = strtotime(date('Y-m-d'));
         $date = date("Y-m-d", strtotime("-1 month", $time));;
         
@@ -36,7 +35,11 @@ class Kernel extends ConsoleKernel
                 ->where('is_premium',0)
                 ->get();
             foreach($ordinaryUser as $ou){
-                $ou['balances'] = $ou['balances'] - 20;
+                if ($ou['balances']>20) {
+                    $ou['balances'] = $ou['balances'] - 20;
+                }else{
+                    $ou['balances'] = 0;
+                }
                 $ou['charged_at'] = date("Y-m-d H:i:s");
                 $ou->save();
             }
@@ -45,7 +48,11 @@ class Kernel extends ConsoleKernel
                 ->where('is_premium',1)
                 ->get();
             foreach($premiumUser as $pu){
-                $pu['balances'] = $ou['balances'] - 40;
+                if ($pu['balances']>40) {
+                    $pu['balances'] = $pu['balances'] - 40;
+                }else{
+                    $pu['balances'] = 0;
+                }
                 $pu['charged_at'] = date("Y-m-d H:i:s");
                 $pu->save();
             }

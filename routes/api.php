@@ -21,10 +21,16 @@ Route::get('kost','KostController@index');
 
 Route::get('signup','KostController@register');
 
-Route::get('showUser','KostController@showUser');
+Route::post('showUser','KostController@showUser');
 
 Route::post('loginApi','KostController@loginApi');
 
 Route::post('createKost','KostController@create');
 
 Route::post('detileKost','KostController@detileKost');
+
+Route::post('updateKost','KostController@update');
+
+Route::post('deleteKost','KostController@delete');
+
+Route::post('checkAvailable','KostController@checkAvailableKost');
